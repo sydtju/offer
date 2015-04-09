@@ -63,3 +63,26 @@ public:
         return flag*sum;
 	}
 };
+//double型数的n次方  复杂度为logn
+class Solution {
+public:
+	double Power(double base, int exponent) {
+	int n=exponent;
+	int flag=exponent>0?1:-1;
+	double res=base;
+	if (n==INT_MIN||n==0)
+	{
+		return 1;
+	}
+   if( abs(base) <= 1e-15 ) return 0;
+	n=flag*n;
+	while(n){
+		if(n==1) res=res*base;
+		else res=res*res;
+		n=n/2;
+	}
+	if(1==flag) return res;
+	else 
+		return (1/res);  
+}
+};
