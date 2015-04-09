@@ -86,3 +86,21 @@ public:
 		return (1/res);  
 }
 };
+//链表倒序输入到vector
+class Solution {
+public:
+	vector<int> printListFromTailToHead(struct ListNode* head) {
+		stack<int> s;
+        ListNode *temp=head;
+        vector<int>  t;
+        while(temp){
+            s.push(temp->val);
+            temp=temp->next;
+        }
+        while(!s.empty()){
+            t.push_back(s.top());
+            s.pop();
+        }
+        return t;
+	}
+};
