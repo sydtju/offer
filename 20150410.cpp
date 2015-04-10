@@ -128,3 +128,42 @@ public:
         return head;
 	}
 };
+//当输入全为大写或者小写的时候 输出第一个只出现一次的元素所在的位置（int类型）
+struct element{
+		 int counter;
+		 int position;
+	 };
+class Solution {
+public:
+	int FirstNotRepeatingChar(string str) {
+			 
+	 int min=str.length()-1;
+	 if(0==min) return 0;
+	
+	 for(int i=0;i<str.length();i++){
+         int t=0;
+         if(str[i]>='a'&&str[i]<='z'){
+		      t=str[i]-'a';
+		 temp[t].counter++;
+		 temp[t].position=i;
+         }
+         else{
+           t=str[i]-'A';
+		 temp[t].counter++;
+		 temp[t].position=i;   
+         }
+	 }
+	 for(int i=0;i<26;i++){
+		 if(temp[i].counter==1)
+		 {
+			 if(temp[i].position<min) min=temp[i].position;
+		 }
+		// cout<<temp[i].counter<<"  "<<temp[i].position<<endl;
+	 }
+        if(min==str.length()-1) return -1;
+	    else  return  min;
+	}
+private: 
+    element temp[26]={{0,0}};
+    
+};
