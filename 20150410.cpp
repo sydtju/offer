@@ -63,3 +63,19 @@ public:
         return (int)max;
 	}
 };
+//字符串空格替换
+class Solution {
+public:
+	string replaceSpace(string str) {
+   		for (int i=0;i<str.size();i++)
+   		{
+	   		if (str[i]==' ')
+	   		{
+			str.erase(i,1);
+			str.insert(i,"%20");
+            i=i+2;
+            }
+   		}
+        return str;
+	}
+};
