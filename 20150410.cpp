@@ -79,3 +79,52 @@ public:
         return str;
 	}
 };
+//合并有序链表
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+	ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+	{
+		ListNode *head=new ListNode(0);
+        ListNode  *temp1=pHead1;
+        ListNode  *temp2=pHead2;
+        ListNode  *re_head=head;
+
+		while(temp1!=NULL&&temp2!=NULL){
+			if((temp1->val)<(temp2->val)){  
+            	head->next=temp1;
+                temp1=temp1->next;
+                head=head->next;
+            }
+            else{
+                head->next=temp2;
+                temp2=temp2->next;
+                head=head->next;
+            }
+        }
+        if(temp1==NULL){
+            while(temp2){
+                head->next=temp2;
+                temp2=temp2->next;
+                head=head->next;
+            }
+        }
+        if(temp2==NULL){
+            while(temp1){
+                head->next=temp1;
+                temp1=temp1->next;
+                head=head->next;
+            }
+        } 
+    	head=re_head->next;
+        delete re_head;
+        return head;
+	}
+};
