@@ -47,3 +47,19 @@ public:
         return head;
 	}
 };
+//连续子数组的最大和
+class Solution {
+public:
+	int FindGreatestSumOfSubArray(vector<int> array) {
+		int i=0;
+        long long sum=INT_MIN;
+        long long max=INT_MIN;
+        if(array.size()==0) return 0;
+        for(;i<array.size();i++){
+            if(sum+array[i]>array[i]) sum=sum+array[i];
+            else sum=array[i];
+            if(sum>max) max=sum;
+        }
+        return (int)max;
+	}
+};
