@@ -24,3 +24,26 @@ private:
 	stack<int> stack1;
 	stack<int> stack2;
 };
+//链表倒序
+/*struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+	ListNode* ReverseList(ListNode* pHead) {
+		ListNode*head=NULL;
+   		ListNode*old_head=pHead;
+        ListNode*temp=NULL;
+        while(old_head){
+            temp=old_head->next;
+            old_head->next=head;
+            head=old_head;
+            old_head=temp;
+        }
+        return head;
+	}
+};
