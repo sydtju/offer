@@ -51,3 +51,25 @@ public:
         }
 	}
 };
+//我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
+class Solution {
+public:
+	int rectCover(int number) {
+		int temp0=1;
+        int temp1=2;
+        int temp2=0;
+        int counter=2;
+        if(0==number) return 1;
+        else if(1==number) return 1;
+        else if(2==number) return 2;
+        else{
+            while(counter<number){
+                counter++;
+                temp2=temp0+temp1;
+                temp0=temp1;
+                temp1=temp2;
+            }
+            return temp1;
+        }
+	}
+};
