@@ -21,3 +21,25 @@
             }
         }
     }
+//输出链表倒数第k个节点
+class Solution {
+public:
+	ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
+	//	if(k<0) return 0;
+        int k_temp=k;
+        ListNode *start=pListHead;
+         ListNode *end=pListHead;
+        while(k_temp--){
+            if(end==NULL){
+                return NULL;
+            }
+            else
+                end=end->next;
+        }
+        while(end!=NULL){
+            start=start->next;
+            end=end->next;
+        }
+        return start;
+	}
+};
