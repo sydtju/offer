@@ -1,3 +1,5 @@
+//打印数字矩形  代码比较短
+
 #include <stdio.h>
 #include <stdlib.h>
 int dat[3][4]={{0,1,2,3},{4,5,6,7},{7,8,9,10}};
