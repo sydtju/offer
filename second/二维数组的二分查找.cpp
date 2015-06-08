@@ -45,7 +45,7 @@ bool Find(vector<vector<int> > array,int target) {
 		}
 	}
 	bool temp=false;
-	for(int i=temp_end;i>0;i--){
+	for(int i=temp_end;i>=0;i--){
 		temp=find1(array[i],target);
 		if (temp)
 		{
