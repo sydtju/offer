@@ -23,7 +23,7 @@ public:
 		hash[(int)str[i]].count++;
 		if (0==hash[(int)str[i]].index) hash[(int)str[i]].index=i;
 	}
-	short temp=10001;
+	int temp=10001;
 	for (int i=0;i<128;i++){
 		if (1==hash[i].count){
 			if(hash[i].index<temp) temp=hash[i].index;
