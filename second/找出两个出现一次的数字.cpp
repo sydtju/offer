@@ -17,3 +17,25 @@ public:
 	*num2=*it_temp;
 	}
 };
+//o（n）的时间复杂度   O（1）的空间复杂度  用异或的方式 取出两个不一样的数的加和  用和中为1的位  将数列分开 相加
+void findnumsappearonce(vector<int> data,int* num1,int *num2) {
+	int length=(int)data.size();
+	*num1=0;
+	*num2=0;
+	if (length<2) return ;
+	int sum=0;
+	for(int i=0;i<length;++i){
+		sum=data[i]^sum;
+	}
+	int temp=1;
+	if(!sum) return ;
+	while (!(temp&sum))
+		temp=temp<<1;
+	for (int j=0;j<length;++j)
+	{
+		if (data[j]&temp)
+			*num1=(*num1)^data[j];
+		else
+			*num2=(*num2)^data[j];
+	}
+}
