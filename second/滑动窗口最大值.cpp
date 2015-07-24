@@ -16,6 +16,7 @@ public:
 	vector<int> max;
 	if (size<=0||num.size()<size) return max;
 	for(unsigned int i=0;i<size;++i){
+	//这里不能是简单的取最大值，必须是按着与下面一样的原则进行 只是这个时候滑动窗口是可以增大的
 		while (!que.empty()&&num[que.back()]<num[i])
 				que.pop_back();
 			que.push_back(i);
