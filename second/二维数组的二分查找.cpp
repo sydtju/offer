@@ -2,6 +2,29 @@
 //请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
 //运行段错误  不知道   用两个二分查找    用二分查找找到大于目标值的最小的数组  然后再用二分法把小于这个数组的 所有数组
 //进行二分查找
+//这里是最简的方式 时间复杂度为O（m+n）    思想是两个从0行cols-1开始   data[0][cols-1] 如果大于目标值 就将列数减少1
+//如果等于返回true   小于就停下   开始行匹配  同样的规则  则最后的时间复杂度最大为m+n
+class Solution {
+public:
+bool Find(vector<vector<int> > array,int target) {
+	int row_length=(int)array.size();
+	if (row_length<=0) return false;
+	int col_length=(int)array[0].size();
+	int row=0;
+	int col=col_length-1;
+	const int value=target;
+	while (row<row_length&&col>=0)
+	{
+		if (array[row][col]>value) col--;
+		else if(array[row][col]==value) return true;
+		else row++;
+	}
+	return false;
+}
+};
+
+
+
 class Solution {
 public:
     bool find1(vector<int> array,int value){
