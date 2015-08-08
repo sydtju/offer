@@ -1,6 +1,35 @@
 //输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果
 //输入如下矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
 //则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+bool print(vector<int> &result,vector<vector<int> > &matrix,int x0,int y0,int x1,int y1){
+	int i;
+	if(x0>x1||y0>y1) return false;
+	for(i=x0;i<=x1;++i)
+		result.push_back(matrix[y0][i]);
+	for(i=y0+1;i<=y1;++i)
+		result.push_back(matrix[i][x1]);
+	if(y0!=y1)	for (i=x1-1;i>=x0;--i)
+		result.push_back(matrix[y1][i]);
+	if(x0!=x1)	for (i=y1-1;i>y0;--i)
+		result.push_back(matrix[i][x0]);
+	return true;
+}
+vector<int> printMatrix(vector<vector<int> > matrix) {
+	vector<int> result;
+	int length_y=(int)matrix.size();
+	if(length_y<=0) return result;
+	int length_x=(int)matrix[0].size();
+	if(length_x<=0) return result;
+	int x0=0,y0=0;
+	int x1=length_x-1,y1=length_y-1;
+	while (print(result,matrix,x0++,y0++,x1--,y1--));
+	return result;
+}
+
+
+
+
+
 //这个方式 相对较为容易  
 class Solution {
 public:
