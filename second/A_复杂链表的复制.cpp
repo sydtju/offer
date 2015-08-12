@@ -39,3 +39,30 @@ public:
 	return result;
     }
 };
+//下面这个就不行  上面的分开写就可以  回头找原因
+class Solution {
+public:
+    RandomListNode* Clone(RandomListNode* pHead)
+    {
+        	RandomListNode* temp=pHead;
+	RandomListNode* result=NULL;
+	if(!pHead) return result;
+	while(temp){
+		RandomListNode* mid_temp=temp->next;
+		temp->next=new RandomListNode(temp->label);
+		temp->next->next=mid_temp;
+		temp=mid_temp;
+	}
+	temp=pHead; 
+	result=pHead->next;
+	RandomListNode* temp_new=result;
+	while(temp){//&&temp_new
+		if(temp->random)	temp->next->random=temp->random->next;
+		temp->next=temp_new->next;
+		if(temp_new->next)  temp_new->next=temp_new->next->next;
+		temp=temp->next;
+		temp_new=temp_new->next;//temp=temp->next->next;
+	}
+	return result;
+    }
+};
