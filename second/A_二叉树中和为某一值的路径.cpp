@@ -46,3 +46,32 @@ public:
         return result;
     }
 };
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};*/
+//这代码思路比较好 但是性能没有改善
+class Solution {
+ public:
+    vector<vector<int> > res;
+    vector<int> temp;
+    void dfsFind(TreeNode* root, int target){
+        temp.push_back(root->val);
+        if(target == root->val && !root->left && !root->right) res.push_back(temp);
+        else{
+            if(root->left) dfsFind(root->left, target - root->val);
+            if(root->right) dfsFind(root->right, target - root->val);
+        }
+          
+        temp.pop_back();
+    }
+    vector<vector<int> > FindPath(TreeNode* root,int expectNumber) {
+        if(root) dfsFind(root, expectNumber);
+        return res;
+    }
+};
