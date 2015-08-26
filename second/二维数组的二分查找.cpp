@@ -15,7 +15,7 @@ bool Find(vector<vector<int> > array,int target) {
 	const int value=target;
 	while (row<row_length&&col>=0)
 	{
-		if (array[row][col]>value) col--;
+		if (array[row][col]>value) col--;//vol--;row=0; //需不需要加？ 
 		else if(array[row][col]==value) return true;
 		else row++;
 	}
