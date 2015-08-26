@@ -10,7 +10,8 @@ int binarySearch(vector<int> arr,int front,int rear){
 	if(front+1 == rear || front == rear)
 		return arr[rear]<arr[front]?arr[rear]:arr[front];
 	int index = (front+rear)/2;
-	if(arr[front] == arr[index] && arr[rear] == arr[index]){//此时两边中间都一样，考虑到特殊情况，我们两遍均遍历一次，进行最后的比较大小。
+	if(arr[front] == arr[index] && arr[rear] == arr[index]){
+		//此时两边中间都一样，考虑到特殊情况，我们两遍均遍历一次，进行最后的比较大小。
 		int find1 = binarySearch(arr,front,index);
 		int find2 = binarySearch(arr,index+1,rear);
 		return find1<find2?find1:find2;
