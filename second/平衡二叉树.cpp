@@ -1,6 +1,27 @@
 //输入一棵二叉树，判断该二叉树是否是平衡二叉树。
 //逐个节点判断  给出每个节点的深度  深度也是递归求得
 //时间复杂度 在O（n）和O（n^2）之间
+
+//最简单方案
+class Solution {
+public:
+    bool check(TreeNode* pRoot,int &depth){
+        if(pRoot==NULL) {depth=0;return true;}
+        int depth_right,depth_left;
+        bool flag_right=check(pRoot->right,depth_right);
+        bool flag_left=check(pRoot->left,depth_left);
+        if(flag_right&&flag_left){
+            int diff=depth_right-depth_left;
+            if(diff<=1&&diff>=-1){depth=1+(diff>0?depth_right:depth_left); return true;}
+        }
+        return false;
+    } 
+    bool IsBalanced_Solution(TreeNode* pRoot) {
+        int temp=0;
+		return  check(pRoot,temp);
+    }
+};
+
 class Solution {
 public:
     int getdepth(TreeNode* pRoot){
